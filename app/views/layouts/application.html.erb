@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blogapp</title>
+    <title>Blog</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,14 @@
   </head>
 
   <body>
+
+  	<%= render partial: "shared/navbar" %>
+
+<div class="container">
+  <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+  <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+
     <%= yield %>
+  </div>
   </body>
 </html>
