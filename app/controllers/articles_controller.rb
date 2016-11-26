@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	def index
-    	@articles = Article.all
+    	@articles = Article.paginate(:page => params[:page], per_page: 5)
   	end
 
 	def show
@@ -8,15 +8,20 @@ class ArticlesController < ApplicationController
   	end
 
 	def new
-  		@article = Article.new
+	  	@article = Article.new
+	    @categories = Category.all.map{|c| [ c.name, c.id ] }
 	end
 
 	def edit
-  		@article = Article.find(params[:id])
+	  	@article = Article.find(params[:id])
+	    @categories = Category.all.map{|c| [ c.name, c.id ] }
 	end
  
 	def create
-	  @article = Article.new(article_params)
+	  	@article = Article.new(article_params)
+	    @article.category_id = params[:category_id]
+	    @article.username = current_user.username
+	    @article.user_id = current_user.id
 	 
 	  if @article.save
 	    redirect_to @article

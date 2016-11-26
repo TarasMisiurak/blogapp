@@ -1,4 +1,5 @@
-<%= form_for @article do |f| %>
+<div class="new-article">
+  <%= form_for @article do |f| %>
  
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -16,16 +17,25 @@
  
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control form-new-article", style: "max-width: 500px;"%>
   </p>
  
   <p>
     <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.text_area :text, class: "form-control form-new-article-text textarea", rows: "3", style: "max-width: 500px;" %>
   </p>
+
+<%= select_tag(:category_id, options_for_select(@categories), {:class => 'btn btn-default', :style => 'height: 30px'}) %>
  
+  <% if current_page?(new_article_path) %>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Create Article', :class => 'btn btn-default' %>
   </p>
+  <% elsif current_page?(edit_article_path) %>
+  <p>
+    <%= f.submit 'Update Article', :class => 'btn btn-default' %>
+  </p>
+    <% end %>
  
 <% end %>
+</div>

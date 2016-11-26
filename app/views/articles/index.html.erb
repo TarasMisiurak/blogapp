@@ -1,21 +1,37 @@
-<h1>Listing articles</h1>
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
- 
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  <%= link_to 'New article', new_article_path %>
-</table>
+<div class="wrapper">
+<h1>Listing articles</h1> 
+
+<% if user_signed_in? %>
+<div class="new-art-btn", id="is-signed-in"> 
+  <%= link_to 'New article', new_article_path, class: "btn btn-default" %>
+</div> &nbsp;
+<% end %>
+
+<br/>
+&nbsp;
+
+<div class="form-article-wrap">
+<div class="form-article">
+      <% @articles.each do |article| %>
+        <%= link_to article.title, article_path(article), class: "title-text"%><br/>
+            <%= article.text %> &nbsp;
+            <br/><br/>
+            <p style="font-size: 12px">Categories: <%= link_to Category.find(article.category_id).name, category_path(article.category_id) %></p>
+            <p style="font-size: 12px">Posted by: <%= link_to article.username %></p>
+          <% if user_signed_in? %>
+           <% if can? :crud, article %>
+           <%= link_to 'Edit', edit_article_path(article), class: "btn btn-default btn-sm btn-art" %> |
+           <% end %>
+           <% if can? :crud, article %>
+           <%= link_to 'Delete', article_path(article),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm btn-art" %>
+                  <% end %>
+                <% end %><br/><br/><br/>
+    <% end %><br/>
+&nbsp;
+</div>
+<br/>
+&nbsp;
+
+<div class="paginate"><%= will_paginate @articles, renderer: BootstrapPagination::Rails %></div>

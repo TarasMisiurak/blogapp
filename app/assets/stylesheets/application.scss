@@ -20,6 +20,7 @@
   margin-top: 20px;
   margin-bottom: 80px;
   padding-left: 50px;
+  padding-right: 50px;
   max-width: 100%;
 }
 
@@ -95,10 +96,23 @@
   padding: 30px 35px 10px;
   margin: auto;
   background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1); 
-  margin-top: 100px; 
+  border: 1px solid rgba(0,0,0,0.1);  
 }
 
 .form-article + .form-article {
 	margin-top: 30px;
+}
+
+.new-art-btn {
+  margin-left: 10%;
+  float: right;
+}
+
+.btn-art {
+  display: inline;
+  margin-top: 10px;
+}
+
+.paginate {
+  text-align: center;
 }

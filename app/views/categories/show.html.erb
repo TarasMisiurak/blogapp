@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @category.desc %>
+</p>
+
+<h3> Articles under this category </h3>
+<% Article.where(category_id: @category.id).each do |article| %>
+<p style="font-size: 15px"><%= link_to article.title, article_path(article) %><p>
+<% end %>
+
+<% if can? :crud, @category %>
+<%= link_to 'Edit', edit_category_path(@category), class: "btn btn-default" %> | <% end %>
+<%= link_to 'Back', categories_path, class: "btn btn-default" %>
