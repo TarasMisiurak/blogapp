@@ -1,13 +1,8 @@
 <%= form_for([@article, @article.comments.build]) do |f| %>
   <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= f.text_area :body, :class => 'form-control', :style => 'max-width: 500px', :placeholder => 'Add comment' %>
   </p>
   <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
+    <%= f.submit 'Add comment', :class => 'btn btn-default' %>
   </p>
 <% end %>

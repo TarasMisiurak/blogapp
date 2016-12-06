@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	def index
-    	@articles = Article.paginate(:page => params[:page], per_page: 5)
+    	@articles = Article.order('created_at DESC').paginate(:page => params[:page], per_page: 5)
   	end
 
 	def show
@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
 	 
 	def update
 	  @article = Article.find(params[:id])
+	  @article.category_id = params[:category_id]
 	 
 	  if @article.update(article_params)
 	    redirect_to @article

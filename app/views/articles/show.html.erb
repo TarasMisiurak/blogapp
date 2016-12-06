@@ -1,18 +1,31 @@
-<p>
-  <strong>Title:</strong>
+<div class="wrapper">
+<div class="article-section">
+<p class="article-title">
   <%= @article.title %>
 </p>
  
-<p>
-  <strong>Text:</strong>
+<p class="article-text">
   <%= @article.text %>
 </p>
- 
-<h2>Comments</h2>
+<hr>
+
+<p>Posted by: <%= link_to @article.username, profile_path(@article.username) %> at <%= @article.created_at.strftime("%b %d, %Y") %>
+</p>
+</div>
+</br>
+
+<div class="comment-section">
+<p style="font-size: 20px">Comments</p>
 <%= render @article.comments %>
+</div>
+</br>
  
-<h2>Add a comment:</h2>
+<div class="add-comment">
+<p style="font-size: 20px">Add a comment:</p>
 <%= render 'comments/form' %>
+</div>
+</br>
  
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-default" %> |
+<%= link_to 'Back', articles_path, class: "btn btn-default" %>
+</div>

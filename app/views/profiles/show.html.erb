@@ -1,0 +1,16 @@
+<div class="wrapper">
+<div class="profile-section">
+<p class="profile-username"><%= @user.username %> profile</p>
+
+<div class="profile-info">
+<p class="profile-form">First Name: <%= @user.first_name %></p>
+
+<p class="profile-form">Last Name: <%= @user.last_name %></p>
+</div>
+</br>
+
+<% if @user == current_user %>
+	<%= link_to("Edit profile", edit_user_registration_path(@user.username), class: "btn btn-default") %>
+<% end %>
+</div>
+</div>

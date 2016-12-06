@@ -10,28 +10,29 @@
 <br/>
 &nbsp;
 
-<div class="form-article-wrap">
-<div class="form-article">
-      <% @articles.each do |article| %>
-        <%= link_to article.title, article_path(article), class: "title-text"%><br/>
-            <%= article.text %> &nbsp;
-            <br/><br/>
-            <p style="font-size: 12px">Categories: <%= link_to Category.find(article.category_id).name, category_path(article.category_id) %></p>
-            <p style="font-size: 12px">Posted by: <%= link_to article.username %></p>
+<div = class="content">
+
+
+
+  <% @articles.each do |article| %>
+  <div class="form-article">
+    <%= link_to article.title, article_path(article), class: "title-text"%><br/>
+      <%= article.text %> &nbsp;
+        <br/><br/>
+        <p style="font-size: 12px">Categories: <%= link_to Category.find(article.category_id).name, category_path(article.category_id) %></p>
+        <p style="font-size: 12px">Posted by: <%= link_to article.username, profile_path(article.username) %> at <%= article.created_at.strftime("%b %d, %Y") %></p>
           <% if user_signed_in? %>
-           <% if can? :crud, article %>
-           <%= link_to 'Edit', edit_article_path(article), class: "btn btn-default btn-sm btn-art" %> |
-           <% end %>
-           <% if can? :crud, article %>
-           <%= link_to 'Delete', article_path(article),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm btn-art" %>
-                  <% end %>
-                <% end %><br/><br/><br/>
-    <% end %><br/>
-&nbsp;
+            <% if can? :crud, article %>
+            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-default btn-sm btn-art" %> |
+          <% end %>
+            <% if can? :crud, article %>
+            <%= link_to 'Delete', article_path(article),
+            method: :delete,
+            data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm btn-art" %></div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
-<br/>
-&nbsp;
 
 <div class="paginate"><%= will_paginate @articles, renderer: BootstrapPagination::Rails %></div>
+</div>

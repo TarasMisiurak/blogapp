@@ -93,7 +93,8 @@
 
 .form-article {
   max-width: auto;
-  padding: 30px 35px 10px;
+  height: auto;
+  padding: 20px 35px 30px;
   margin: auto;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.1);  
@@ -115,4 +116,51 @@
 
 .paginate {
   text-align: center;
+}
+
+.article-title {
+  font-size: 30px;
+}
+
+.article-text {
+  font-size: 15px;
+}
+
+.profile-info {
+  font-size: 15px;
+}
+
+.comment-section {
+  padding: 10px 20px 10px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.add-comment {
+  padding: 10px 20px 10px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.article-section {
+  padding: 20px 20px 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.comment-body {
+  padding: 10px 10px 10px;
+  background-color: #f2f2f2;
+  border: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+}
+
+.profile-section {
+  padding: 20px 20px 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.profile-username {
+  font-size: 30px;
 }
