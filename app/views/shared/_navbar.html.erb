@@ -21,8 +21,8 @@ body {
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#">Home <span class="sr-only">(current)</span></a></li>
-        <li class="active"><%= link_to "Articles", articles_path %></li>
-        <li><%= link_to "Categories", categories_path %></li>
+        <li class="<%= 'active' if params[:controller] == 'articles' %>"><%= link_to "Articles", articles_path %></li>
+        <li class="<%= 'active' if params[:controller] == 'categories' %>"><%= link_to "Categories", categories_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explore <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -38,6 +38,12 @@ body {
       </ul>
       <form class="navbar-form navbar-left">
         <div class="input-group">
+          <% form_tag articles_path, :method => 'get' do %>
+            <p>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Search", :title => nil %>
+            </p>
+          <% end %>
           <input type="text" class="form-control" placeholder="Search">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" aria-label="Left Align">
@@ -52,7 +58,7 @@ body {
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'Profile', profile_path(current_user.username) %></li>
+            <li class="<%= 'active' if params[:controller] == 'profiles' %>"><%= link_to 'Profile', profile_path(current_user.username) %></li>
             <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>

@@ -1,7 +1,9 @@
+<div class="wrapper">
 <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
 
+<div class="categories-section">
 <table class="table">
   <thead>
     <tr>
@@ -27,9 +29,11 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 
 <% if can? :crud, @category %>
 <%= link_to 'New Category', new_category_path, class: "btn btn-default" %>
 <% end %>
+</div>

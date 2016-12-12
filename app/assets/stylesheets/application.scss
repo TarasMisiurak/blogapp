@@ -14,6 +14,7 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 .wrapper {  
@@ -163,4 +164,22 @@
 
 .profile-username {
   font-size: 30px;
+}
+
+.article-form {
+  padding: 20px 20px 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.categories-section {
+  padding: 20px 30px 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.categories-show {
+  padding: 20px 30px 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
 }

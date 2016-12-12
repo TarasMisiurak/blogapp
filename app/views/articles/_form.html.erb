@@ -1,6 +1,6 @@
 <div class="new-article">
   <%= form_for @article do |f| %>
- 
+
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -15,6 +15,7 @@
     </div>
   <% end %>
  
+ <div class="article-form">
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title, class: "form-control form-new-article", style: "max-width: 500px;"%>
@@ -36,6 +37,7 @@
     <%= f.submit 'Update Article', :class => 'btn btn-default' %>
   </p>
     <% end %>
+    </div>
  
 <% end %>
 </div>

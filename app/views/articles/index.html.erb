@@ -17,8 +17,9 @@
   <% @articles.each do |article| %>
   <div class="form-article">
     <%= link_to article.title, article_path(article), class: "title-text"%><br/>
+    </br>
       <%= article.text %> &nbsp;
-        <br/><br/>
+        <br/><hr>
         <p style="font-size: 12px">Categories: <%= link_to Category.find(article.category_id).name, category_path(article.category_id) %></p>
         <p style="font-size: 12px">Posted by: <%= link_to article.username, profile_path(article.username) %> at <%= article.created_at.strftime("%b %d, %Y") %></p>
           <% if user_signed_in? %>

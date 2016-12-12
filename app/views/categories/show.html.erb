@@ -1,19 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper">
+	<div class="categories-show">
+	<p id="notice"><%= notice %></p>
 
-<p style="font-size: 20px">
-  <%= @category.name %>
-</p>
+	<p style="font-size: 30px">
+	  <%= @category.name %>
+	</p>
 
-<p>
-  <strong>Desc:</strong></br>
-  <%= @category.desc %>
-</p>
+	<p>
+	  <%= @category.desc %>
+	</p>
+	<hr>
 
-<p style="font-size: 15px">Articles under this category </p>
-<% Article.where(category_id: @category.id).each do |article| %>
-<p style="font-size: 15px"><%= link_to article.title, article_path(article) %><p>
-<% end %>
+	<p style="font-size: 15px">Articles under this category </p>
+	<% Article.where(category_id: @category.id).each do |article| %>
+	<p style="font-size: 15px"><%= link_to article.title, article_path(article) %><p>
+	<% end %>
 
-<% if can? :crud, @category %>
-<%= link_to 'Edit', edit_category_path(@category), class: "btn btn-default" %> | <% end %>
-<%= link_to 'Back', categories_path, class: "btn btn-default" %>
+	<% if can? :crud, @category %>
+	<%= link_to 'Edit', edit_category_path(@category), class: "btn btn-default" %><% end %>
+	</div>
+	</br>
+	<%= link_to 'Back', categories_path, class: "btn btn-default" %>
+</div>

@@ -11,6 +11,7 @@
 
 <p>Posted by: <%= link_to @article.username, profile_path(@article.username) %> at <%= @article.created_at.strftime("%b %d, %Y") %>
 </p>
+<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-default" %>
 </div>
 </br>
 
@@ -25,7 +26,6 @@
 <%= render 'comments/form' %>
 </div>
 </br>
- 
-<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-default" %> |
+
 <%= link_to 'Back', articles_path, class: "btn btn-default" %>
 </div>
